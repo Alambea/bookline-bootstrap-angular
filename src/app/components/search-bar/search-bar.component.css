@@ -1,0 +1,25 @@
+
+.form-inline {
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom:20px;
+}
+
+.form-control {
+    border-radius:none;
+    border: none;
+    transition: border-bottom 1s;
+    border-bottom: 1px solid lightgray!important;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-bottom: 1px solid #333745!important;
+}
+
+input{
+    background: none;
+}
+input:focus{
+    background: white;
+}

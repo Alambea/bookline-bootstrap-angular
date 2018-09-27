@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: content-box;
+  }
+
+html {
+    box-sizing: border-box;
+    }
+*, *:before, *:after {
+    box-sizing: inherit;
+    }
+
+body {
+    background: rgb(247, 245, 245);
+    padding-top:100px
+    }
+        

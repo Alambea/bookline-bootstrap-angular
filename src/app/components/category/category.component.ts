@@ -1,0 +1,62 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router'
+
+import { BookService } from '../../services/book.service';
+import { Book } from '../../models/book';
+import { CategoryService } from '../../services/category.service';
+import { Category } from '../../models/category';
+import { debug } from 'util';
+
+@Component({
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.css']
+})
+export class CategoryComponent implements OnInit {
+
+  @Input()
+  category: Category;
+  books: Book[];
+  categoryLink : boolean;
+
+  constructor(private route: ActivatedRoute, private _bookService: BookService, private _categoryService: CategoryService) {
+    
+    this.categoryLink = true;
+    this.booksByUrl();
+
+  }
+
+  ngOnInit() {
+
+    this.booksByCategory(this.category);
+
+  }
+
+  booksByCategory(category) {
+    this._bookService.getBooksByCategory(category.category, (booksCat: Book[]) => { 
+      this.books = booksCat; 
+    });
+  };
+
+  booksByUrl() {
+    if (!this.category) {
+      this.route.params.subscribe(params => {
+        this._bookService.getBooksByCategory(params['category.category'], (booksCat: Book[]) => { 
+          this.books = booksCat;
+          this.category = this.books[0].category;
+
+          this.categoryLink = false;
+          
+        }) //log the value of 
+      });
+
+    }
+
+  }
+  
+}
+
+
+
+
+

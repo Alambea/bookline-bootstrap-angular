@@ -1,0 +1,47 @@
+<div class="book col-lg-1 col-md-1 col-xs-6">
+    <div class="card" style="width: 10rem;">
+      <img class="card-img-top" src="{{book.img}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{book.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
+        <p class="card-text"></p>
+        <div class="">
+          <a *ngIf="!categoryLink" [routerLink]="[book.isbn]" class="card-link" ng-href="book-detail" >+ info</a>
+          <a *ngIf="categoryLink" [routerLink]="[category.category, book.isbn]" class="card-link" ng-href="book-detail" >+ info</a>
+
+          <a href="#" class="card-link">Add</a>
+        </div>
+      </div>
+    </div>
+    <i class="far fa-bookmark bookmark-deco"></i>
+  </div>
+
+  <!--
+<div class="book col-lg-1 col-md-1 col-xs-6">
+    <div class="card" style="width: 10rem;">
+      <img class="card-img-top" src="{{book.img}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{book.title}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{book.author}}</h6>
+        <p class="card-text"></p>
+        <div class="">
+          <a [routerLink]="[book.category, book.isbn]" class="card-link" ng-href="book-detail">+ info</a>
+          <a href="#" class="card-link">Add</a>
+        </div>
+      </div>
+    </div>
+    <i class="far fa-bookmark bookmark-deco"></i>
+  </div>
+
+
+  -->
+
+
+  <!--
+  <ng-template #noBooks>
+    <h3>There's not books for this Category. </h3>
+  </ng-template>
+  -->
+
+
+

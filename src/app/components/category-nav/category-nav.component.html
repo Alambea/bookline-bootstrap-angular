@@ -1,0 +1,5 @@
+<li  class="categoryNav ">
+    <ul *ngFor="let category of categories" class="capitalize" [class.selected]= "category === selectedCat" (click)="onSelectCat(category)" [routerLink]="[category.category]" >
+        <span class="capitalize">{{category.category}}</span>
+    </ul>
+</li>
