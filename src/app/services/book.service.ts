@@ -24,13 +24,19 @@ getBooks() : Promise<Book[]>{
   return this._http.get<Book[]>(this.booksUrl).toPromise();
 }
 
+getAllBooks(callback){
+  this.getBooks().then((books : Book[])=>{
+      callback(books);
+  })
+}
+
 bookByIsbn(isbn, callback){
   this.getBooks().then((books : Book[])=>{
 for(let i=0; i<books.length; i++) {
     if (books[i].isbn == isbn) 
     
       callback(books[i]);
-  }
+    }
   })
   
 }
@@ -48,7 +54,6 @@ getBooksByCategory(category,callback){
   this.getBooks().then((books : Book[]) => {
     let bookCat: Book[]=new Array();
     for (let i=0 ; i<books.length ; i++){
-  
       if (books[i].category.category === category){
          bookCat.push(books[i]);
       }
@@ -62,10 +67,8 @@ getBooksByCategory(category,callback){
 getRandomBook(callback){
   this.getBooks().then((books : Book[])=>{
     let randomBook = Math.floor(Math.random() * books.length );
-    debugger;
     callback(books[randomBook]);
   })
 
 }
-
 }

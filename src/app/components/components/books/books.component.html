@@ -1,0 +1,31 @@
+<div *ngIf="book">
+    <div class="book col-lg-1 col-md-1 col-xs-6">
+        <div class="card" style="width: 10rem;">
+            <a class="card-link" ng-href="book-detail" (click)="goSearch()"data-dismiss="modal">
+              <img class="card-img-top" src="{{book.img}}" alt="Card image cap">
+            </a>
+          <div class="card-body">
+            <h5 class="card-title">
+              <a class="card-link" ng-href="book-detail" (click)="goSearch()" data-dismiss="modal">{{book.title}}</a>
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              <a class="card-link" ng-href="book-detail" (click)="goSearch()" data-dismiss="modal">{{book.author}}</a>
+            </h6>
+            <p class="card-text"></p>
+      
+            <a href="#" class="card-link">Add</a>
+          </div>
+        </div>
+      </div>
+      <i class="far fa-bookmark bookmark-deco"></i>
+</div>
+
+
+  <!--
+  <ng-template #noBooks>
+    <h3>There's not books for this Category. </h3>
+  </ng-template>
+  -->
+
+
+

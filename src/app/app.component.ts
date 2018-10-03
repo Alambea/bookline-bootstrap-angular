@@ -15,12 +15,12 @@ import { Category } from './models/category';
 
 export class AppComponent {
 
+  router: string;
 
   constructor( private _categoryService : CategoryService, private route: ActivatedRoute, private _router: Router) {  
   }
   
   ngOnInit(){
   }
-
 
 }

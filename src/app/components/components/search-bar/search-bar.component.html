@@ -1,0 +1,93 @@
+<form class="form-inline justify-content-center">
+    <input class="form-control mr-sm-2" data-toggle="modal" data-target="#searchBook" role="search" type="search" placeholder="Search" aria-label="Search">
+    <div class="input-group-append">
+        <button class="btn btn-outline-dark btn-sm my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+    </div>
+
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" id="searchBook" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Search</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+<!--FORM-->
+            <form class="justify-content-center">
+                <div class="form-group justify-content-center">
+                    <input id="searchInput" class="form-control mr-sm-2" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" data-toggle="modal" data-target="#exampleModal" role="search" type="search" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-dark btn-sm my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+<!-- Radio -->
+                <div class="form-check">
+                    <div class="custom-control custom-radio " (click)="searchFilter()">
+                        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" >
+                        <label class="custom-control-label" for="customRadioInline1">Title</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline" (click)="searchFilter()">
+                        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" >
+                        <label class="custom-control-label" for="customRadioInline2">Autor</label>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+<!--show books-->
+<div *ngIf="books">
+    <div *ngIf="searchTitle" class="row justify-content-center">
+        <div *ngFor="let book of books | filterPipe: {title: searchText}">
+            <div class="container-fluid col-lg-12">
+                <app-books [book]=book ng-click="searchText = null"  data-dismiss="modal" ></app-books>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!searchTitle" class="row justify-content-center">
+            <div *ngFor="let book of books | filterPipe: {author: searchText}">
+                <div class="container-fluid col-lg-12">
+                    <app-books [book]=book ng-click="searchText = null"  data-dismiss="modal" ></app-books>
+                </div>
+            </div>
+        </div>
+
+</div>
+<!--show books-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+<!--books by title
+<div *ngIf="books" class="row justify-content-center ">
+        <div *ngIf="searchTitle">
+            <div *ngFor="let book of books | filterPipe: {title: searchText}">
+                <div class="container-fluid col-lg-12">
+                    <app-books [book]=book ng-click="searchText = null"  data-dismiss="modal" ></app-books>
+                </div>
+            </div>
+        </div>
+    books by autor
+        <div *ngIf="!searchTitle">
+            <div *ngFor="let book of books | filterPipe: {autor: searchText}">
+                <div class="container-fluid col-lg-12">
+                    <app-books [book]=book ng-click="searchText = null"  data-dismiss="modal" ></app-books>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
