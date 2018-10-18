@@ -1,0 +1,43 @@
+section {
+    background: white;
+    border-radius: 5px;
+}
+
+h2 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 3% ;
+    border-bottom: 1px solid lightgray;
+}
+
+a{
+    color:#333745;
+}
+
+a:hover{
+    color:darkred!important;
+    text-decoration: none;
+}
+
+
+/*****Media/Responsive*****/
+@media (min-width: 300px) {
+    section {
+        margin: 80px 3%;
+    }
+}
+@media (min-width: 768px) {
+    section {
+        margin: 80px 10%;
+    }
+}
+@media (min-width: 992px) {
+    section {
+        margin: 80px 10%;
+    }
+}
+@media (min-width: 1200px) {
+    section {
+        margin: 80px 10%;
+    }
+}

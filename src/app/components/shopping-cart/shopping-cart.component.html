@@ -1,0 +1,83 @@
+<section>
+  <h2>Your Shopping Cart</h2>
+  <div class="container-fluid ">
+    <div class="justify-content-center">
+
+<!--table-->
+  <!--table head-->
+      <div *ngIf="theresBookCart">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Book</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+            </tr>
+          </thead>
+  <!--table head-->
+
+  <!--table body-->
+          <tbody>
+            <tr class="hv" *ngFor="let cart of bookCart; let i = index" [attr.data-index]="i">
+              <th scope="row">{{i+1}}</th>
+              <td>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-1">
+                      <div class="col-img">
+                        <img class="p" src="{{cart.book.img}}" alt="{{cart.book.title}}" (click)="goSearch(book)"/>   
+                      </div>
+                      <span class="text-muted text-center"><small>{{cart.book.isbn}}</small></span>               
+                    </div>
+                    <div class="col-sm-2">
+                    </div>
+                    <div class="col-sm-9">
+                      <div class="book-info">
+                          <a class="p" (click)="goSearch(book)"><h6>{{cart.book.title}}</h6></a>
+                        <p>{{cart.book.author}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <td>      
+                <form >
+                  <div class="form-group text-center">
+                    <input type="number" class="form-control form-control-sm"  [attr.id]="'input'+ cart.book.isbn" min="0" max="999" (keyup.enter)="bookQuantity(cart.book, cart.items)" value="{{cart.items}}">
+                  </div>
+                  <button type="button" class="buy-btn btn-sm card-link btn btn-outline-success "  (click)="bookQuantity(cart.book, cart.items)">Change</button>
+                <button type="button" class="buy-btn btn-sm card-link btn btn-outline-danger " (click)="removeBook(cart.book)">Remove</button>
+              </form>     
+            </td>
+              <td class="text-center">
+                <span *ngIf="variousItems(cart.items) == true">{{cart.book.price | currency}} unit                
+                  <hr>
+                </span>
+                <span class="font-weight-bold">{{(cart.book.price * cart.items) | currency}}</span></td>
+            </tr>
+          </tbody>
+  <!--table body-->
+
+          <tfoot>
+            <tr scope="row tfooter">
+              <th scope="col-1">TOTAL</th>
+              <th scope="col-11 text-right">{{getTotal() | currency}}</th>
+            </tr>
+          </tfoot>
+        </table>
+        <button type="button" class=" text-right card-link btn btn-success" >Purchase</button>
+      </div>
+<!--table-->
+
+<!--if there're no books in de shopping cart-->
+      <div *ngIf="!theresBookCart" class="text-center">
+        <a routerLink="" (click)="homePage()">   
+          <h3 class="text-muted p">Add some books to continue!</h3>
+          <i class="far fa-bookmark"></i>
+        </a>
+      </div>
+<!--if there're no books in de shopping cart-->
+    </div>
+  </div>
+  
+</section>

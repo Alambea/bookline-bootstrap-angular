@@ -1,0 +1,42 @@
+<div *ngIf="book">
+
+  <div class="book col-lg-1 col-md-1 col-xs-6">
+    <div class="card" style="width: 10rem;">
+      <a class="card-link" ng-href="book-detail" (click)="goSearch()"data-dismiss="modal">
+        <img class="card-img-top p" src="{{book.img}}" alt="Card image cap">
+      </a>
+      <div class="card-body">
+
+<!--title-->
+      <h5 class="card-title">
+        <div *ngIf="titleLength; then shortTitle else longTitle"></div>
+        <ng-template #shortTitle>
+          <a class="card-link p" ng-href="book-detail" (click)="goSearch()" data-dismiss="modal">
+            {{book.title}}
+          </a>
+        </ng-template>
+
+        <ng-template #longTitle>
+          <a class="card-link p" ng-href="book-detail" title="{{book.title}}" (click)="goSearch()" data-dismiss="modal">
+            {{(book.title | slice:0:25)+'...' }}
+          </a>
+        </ng-template>
+      </h5>
+<!--title-->
+          
+        <h6 class="card-subtitle mb-2 text-muted">
+          <a class="card-link" ng-href="book-detail" (click)="goSearch()" data-dismiss="modal">{{book.author}}</a>
+        </h6>
+        <span class="price">{{book.price | currency}}</span>
+
+        <button  class="btn btn-outline-success btn-sm" type="button"  (click)="addBook()">Buy</button>
+      </div>
+    </div>
+  </div>
+<!--bookmark-->
+  <i class="far fa-bookmark bookmark-deco p" (click)="favBook()"></i>
+</div>
+
+
+
+

@@ -5,6 +5,7 @@
 
 html {
     box-sizing: border-box;
+
     }
 *, *:before, *:after {
     box-sizing: inherit;
@@ -12,6 +13,10 @@ html {
 
 body {
     background: rgb(243, 243, 243);
-    padding-top:100px
+    padding-top: 100px;
+    overflow-x: hidden;
     }
-        
+
+.p{
+    cursor: pointer;
+}

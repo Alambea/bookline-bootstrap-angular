@@ -7,6 +7,7 @@ import { QUOTES } from '../mocks/mock-quotes';
   providedIn: 'root'
 })
 export class QuoteService {
+  
   quotes: Quote[]=new Array();
 
   constructor() {

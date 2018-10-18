@@ -12,6 +12,6 @@ export class CategoryService {
 
   constructor() {
     this.categories = CATEGORY;
-   }
+  }
 
 }

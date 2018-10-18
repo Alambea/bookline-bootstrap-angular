@@ -1,0 +1,23 @@
+footer{
+    margin-top: 100px;
+}
+
+a{
+    color:lightgray;
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+a:hover{
+    color:white;
+}
+
+i{
+    color:goldenrod;
+    margin: 0px 5px;
+    transition: color 0.5s;
+}
+i:hover{
+    color:gold;
+
+}

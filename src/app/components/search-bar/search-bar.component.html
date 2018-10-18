@@ -1,0 +1,74 @@
+<!--Home Search-->
+<div class=" input-group form-inline justify-content-center">
+    <input id="searchInput" class="form-control input-sm mr-sm-2" data-toggle="modal" data-target="#searchBook" role="search" type="search" placeholder="Search" aria-label="Search"  >
+    <div class="input-group-append">
+        <button class="btn btn-outline-dark btn-sm my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" id="searchBook" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Find your book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+    <!--FORM-->
+    <div class="modal-body">
+                <form>
+                    <div class="input-group form-group justify-content-center">
+                        <input id="searchModal" [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" class="form-control mr-sm-2" data-target="#searchBook" role="search" type="search" placeholder="Search" aria-label="Search"  > 
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-dark btn-sm my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+        <!-- Radio -->
+                    <div class="form-check text-center">
+                        <div class="custom-control custom-radio custom-control-inline" (click)="searchFilter()">
+                            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" >
+                            <label class="custom-control-label" for="customRadioInline1">Title</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline text-center" (click)="searchFilter()">
+                            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" >
+                            <label class="custom-control-label" for="customRadioInline2">Autor</label>
+                        </div>
+                    </div>
+        <!-- Radio -->
+                </form>
+            </div>
+    <!--FORM-->
+
+    <!--show books by title-->
+            <div *ngIf="books">
+                <div *ngIf="searchTitle" class="row justify-content-center">
+                    <div *ngFor="let book of books | filterPipe: {title: searchText}">
+                        <div class="container-fluid col-lg-12">
+                            <app-books [book]=book ng-click="searchText = null"></app-books>
+                        </div>
+                    </div>
+                </div>
+    <!--show books by title-->
+
+    <!--show books by author-->
+                <div *ngIf="!searchTitle" class="row justify-content-center">
+                    <div *ngFor="let book of books | filterPipe: {author: searchText}">
+                        <div class="container-fluid col-lg-12">
+                            <app-books [book]=book ng-click="searchText = null"></app-books>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!--show books by author-->
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+<!-- Modal -->

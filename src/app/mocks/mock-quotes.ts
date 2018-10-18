@@ -1,4 +1,4 @@
-import {Quote} from '../models/quote';
+import { Quote } from '../models/quote';
 
 export const QUOTES: Quote[] = [
     {
@@ -22,12 +22,3 @@ export const QUOTES: Quote[] = [
         source: "The Namesake"
     }
 ]
-
-
-/**     
-    {
-        writer: "",
-        quote: "",
-        source: ""
-    },
- **/
