@@ -1,2 +1,2 @@
 # bookline-bootstrap-angular
-E-comerce exercice of books using Bootstrap and Angular.
+E-commerce exercice of books using Bootstrap and Angular.
